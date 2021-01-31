@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<head>
+    <title>PRISM Setup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        *
+        {
+            box-sizing: border-box;
+
+            --bg-color: #E0E0E0;
+            --mg-color: #f3f3f3;
+            --fg-color: #444;
+            --doc-width: 500px;
+        }
+        body
+        {
+            background: url("seamless_rose.png");
+
+            font-family: monospace;
+            font-size: 120%;
+        }
+        #pageheader
+        {
+            margin: 1em auto;
+            text-align: center;
+            text-transform: uppercase;
+            width: var(--doc-width);
+            padding: 1em;
+
+            border: 2px solid var(--fg-color);
+            background-color: var(--mg-color);
+            color: var(--fg-color);
+            user-select: none;
+        }
+        form
+        {
+            margin: 0px auto;
+            width: var(--doc-width);
+            padding: 2em;
+
+            border-radius: 5px;
+            box-shadow: 4px 4px 3px rgba(20, 20, 20, .5);
+            border: 2px solid var(--fg-color);
+
+            background: var(--mg-color);
+            color: var(var(--fg-color));
+        }
+        li
+        {
+            text-align: center;
+            list-style: none;
+        }
+        li + li
+        {
+            margin-top: 1em;
+        }
+        label
+        {
+            display: inline-block;
+            width: 60px;
+            text-align: right;
+        }
+        .submit
+        {
+            display: inline-block;
+            width: 100%;
+            text-align: right;
+        }
+        .submit button, button:active
+        {
+            height: 2.5em;
+            width: 6em;
+            border: 1px solid var(--fg-color);
+
+            text-transform: uppercase;
+
+            background: var(--bg-color);
+            color: var(--fg-color);
+        }
+    </style>
+    <script>
+        function post_config()
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/config", true)
+
+            alert("SSID: " + document.getElementById("ssid").value());
+        }
+    </script>
+</head>
+<body>
+    <h2 id="pageheader">First Time Setup</h2>
+    <form id="wireless_form" onsubmit="post_config()">
+        <li>
+            <label for="ssid">SSID:</label>
+            <input type="text" id="ssid" name="user_ssid">
+        </li>
+        <li>
+            <label for="password">Pass:</label>
+            <input type="password" id="pass" name="user_pass">
+        </li>
+        <li class="submit">
+            <button type="submit">Submit</button>
+        </li>
+    </form>
+</body>

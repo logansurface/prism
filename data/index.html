@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PRISM LED Controller</title>
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+    </head>
+    <body>
+        <div class="row">
+
+            <div class="header noselect">
+                <h1>PRISM</h1>
+                <p>Welcome to PRISM - an ESP32 based led controller</p>
+            </div>
+
+            <div class="side">
+                <input type="button" class="tablink" onclick="openMode(event, 'all')" value="Modify All"></input>
+                <input type="button" class="tablink" onclick="openMode(event, 'underglowleft')" value="Underglow Left"></input>
+                <input type="button" class="tablink" onclick="openMode(event, 'underglowright')" value="Underglow Right"></input>
+                <input type="button" class="tablink" onclick="openMode(event, 'bar')" value="Bar"></input>
+                <input type="button" class="tablink" onclick="openMode(event, 'theme')" value="Theme" id='side_end'></input>
+            </div>
+
+            <div class="main">
+                <div id="intro_text">
+
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <svg id="h510_svg" viewBox="0 0 165.85 227.54" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <style>
+                            *{
+                                image-rendering: crisp-edges;
+                            }
+                            #bs_group
+                            {
+                                stroke: none;
+                                fill: none;
+                            }
+                            #bs:hover, #ts:hover
+                            {
+                                stroke: #00ff37;
+                                transition: 0.2s linear;
+                            }
+                            #ts
+                            {
+                                fill: #ff8585;
+                            }
+                            #ts:active, #bs:active
+                            {
+                                fill: #00ff37;
+                            }
+                        </style>
+                        <g transform="translate(-30.335 -.66143)" style="mix-blend-mode:normal">
+                            <rect x="33.86" y="41.961" width="141.82" height="144.46" style="fill:#ffffff;stroke-linecap:round;stroke-linejoin:bevel;stroke-opacity:.23387;stroke-width:1.3229;stroke:#ffffff"/>
+                            <rect x="33.862" y="41.963" width="143.41" height="145.39" style="fill:#e8e8e8;stroke-linecap:round;stroke-opacity:.99023;stroke-width:1.3346;stroke:#000000"/>
+                            <path d="m33.476 48.777h-3.1404" style="fill:#e8e8e8;stroke-opacity:.99023;stroke-width:3.7042;stroke:#000000"/>
+                            <path d="m45.905 187.39 2.2596 7.3311h13.086l2.5797-1.9733 0.59531-5.3909z" style="fill:#e8e8e8;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <path d="m61.973 187.39-0.72208 7.3296 2.5797-1.9733 0.59531-5.3909z" style="fill:#999999;stroke-linejoin:bevel;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <path d="m148.16 187.34 2.2596 7.3311h13.086l2.5797-1.9733 0.59531-5.3909z" style="fill:#e8e8e8;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <path d="m164.23 187.34-0.72208 7.3296 2.5797-1.9733 0.59531-5.3909z" style="fill:#999999;opacity:.61995;stroke-linejoin:bevel;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <path d="m164.23 187.34-0.72208 7.3296 2.5797-1.9733 0.59531-5.3909z" style="fill:#999999;stroke-linejoin:bevel;stroke-opacity:.99023;stroke-width:1.2435;stroke:#000000"/>
+                            <rect x="33.86" y="41.961" width="143.22" height="110.74" style="fill:#808080;stroke-linejoin:bevel;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <path d="m164.23 187.34-0.72208 7.3296 2.5797-1.9733 0.59531-5.3909z" style="fill:#999999;stroke-linejoin:bevel;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <rect x="40.411" y="48.643" width="129.73" height="104.04" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3229;stroke:#000000"/>
+                            <rect x="53.522" y="56.404" width="103.63" height="88.59" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3208;stroke:#000000"/>
+                            <path d="m53.522 56.404-13.111-7.7609" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3234;stroke:#000000"/>
+                            <path d="m53.522 144.99-13.111 7.692" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3234;stroke:#000000"/>
+                            <path d="m157.15 144.99 4.3966 7.6706" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3234;stroke:#000000"/>
+                            <path d="m157.15 56.404 3.9756-7.8079" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3234;stroke:#000000"/>
+                            <path d="m161.13 48.596v103.8" style="fill:#808080;stroke-opacity:.99023;stroke-width:1.3234;stroke:#000000"/>
+                            <rect x="125.75" y="59.534" width="14.379" height="87.567" style="fill:#e8e8e8;stroke-width:.78713;stroke:#000000"/>
+                            <path d="m125.75 147.1-1.5031 5.7264h17.119l-1.2363-5.7264z" style="fill:#a6a6a6;stroke-width:.79375;stroke:#000000"/>
+                            <rect x="125.76" y="100.28" width="14.361" height="5.8012" style="fill:#a6a6a6;stroke-width:.79392;stroke:#000000"/>
+                            <path d="m132.95 97.201v-34.264" style="fill:#a6a6a6;stroke-linecap:round;stroke-width:1.3229;stroke:#000000"/>
+                            <g id="bs_group">
+                                <circle id="bs" onclick="modify_color(event, 'bs')" cx="184.94" cy="216.96" r="10.64" style="paint-order:normal;stroke-dashoffset:12.092;stroke-linejoin:round;stroke-width:1.2092"/>
+                                <path d="m107.55 187.72 17.209 29.806h49.231" style="fill:none;paint-order:normal;stroke-dasharray:5.29167, 2.64583;stroke-linejoin:round;stroke-width:1.3229;stroke:#000000"/>
+                            </g>
+                            <rect x="34.523" y="42.618" width="141.86" height="109.42" style="fill-opacity:.2;fill:#ffffff;paint-order:normal"/>
+                            <path d="m42.927 67.658 7.0063-7.3805" style="fill:none;paint-order:normal;stroke-linejoin:round;stroke-opacity:.5;stroke-width:.79375;stroke:#ffffff"/>
+                            <path d="m43.082 75.158 22.535-24.031" style="fill:none;paint-order:normal;stroke-linejoin:round;stroke-opacity:.5;stroke-width:.79375;stroke:#ffffff"/>
+                            <path d="m51.782 74.69 15.799-16.174" style="fill:none;paint-order:normal;stroke-linejoin:round;stroke-opacity:.5;stroke-width:.79375;stroke:#ffffff"/>
+                            <circle id="ts" onclick="modify_color(event, 'ts')" cx="54.195" cy="11.906" r="10.64" style="paint-order:normal;stroke-dashoffset:12.092;stroke-linejoin:round;stroke-width:1.2092"/>
+                            <path d="m177.92 20.393-37.325 64.649" style="fill:#505050;paint-order:normal;stroke-width:0"/>
+                            <path d="m131.34 41.635-17.209-29.806h-49.231" style="fill:none;paint-order:normal;stroke-dasharray:5.292, 2.646;stroke-linejoin:round;stroke-width:1.323;stroke:#000000"/>
+                        </g>
+                    </svg>
+
+                    <h2 class="noselect">Press any of the buttons on the left side of the screen to begin customizing.</h2>
+                </div>
+
+                <div id="all" class="tabcontent">
+                    <svg id="strip_svg" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 149.86 18.487">
+                        <style>
+                            #led_one:hover
+                            {
+                                fill: red;
+                            }
+                        </style>
+                        <g transform="translate(-30.069 -77.538)">
+                         <g transform="translate(-1.424)" stroke-linecap="square">
+                          <rect x="31.889" y="77.935" width="149.07" height="17.693" fill="#d9d9d9" stroke="#000" stroke-width=".79375"/>
+                          <g stroke="#999" stroke-width="1.3807">
+                           <path d="m47.449 86.894 117.96 0.0023" fill="#fff"/>
+                           <path d="m48.251 82.445 117.03 0.0023" fill="#999"/>
+                           <path d="m47.316 91.111 118.23 0.0023" fill="#fff"/>
+                          </g>
+                         </g>
+                         <g fill="none" stroke-linecap="square" stroke-width="1.3807">
+                          <path d="m31.954 82.444 8.7844 0.0023" stroke="#fb0000"/>
+                          <path d="m33.109 86.908 8.7844 0.0023" stroke="#fbf900"/>
+                          <path d="m31.954 91.11 8.7844 0.0023" stroke="#0088fb"/>
+                         </g>
+                         <g stroke="#000" stroke-linecap="square">
+                          <g transform="translate(13.533)">
+                           <g stroke-width="1.3229">
+                            <rect x="27.214" y="81.114" width="11.339" height="11.339" fill="#afafaf"/>
+                            <g>
+                             <path d="m27.206 82.446h-1.3057"/>
+                             <path d="m27.206 91.112h-1.3057"/>
+                             <path d="m27.166 86.908h-1.3057"/>
+                             <path d="m39.875 86.908h-1.3057"/>
+                             <path d="m39.875 82.42h-1.3057"/>
+                             <path d="m39.875 91.127h-1.3057"/>
+                            </g>
+                           </g>
+                           <circle id="led_one" cx="32.846" cy="86.746" r="3.4963" fill="#00e6ff" stroke-width=".79375"/>
+                          </g>
+                          <g fill="none" stroke-width=".29104">
+                           <path d="m45.436 83.388v3.2072h-2.4722"/>
+                           <path d="m45.436 86.595 0.70904 0.70904h2.2125l0.64558-0.64558h0.86632"/>
+                           <path d="m48.357 87.304v2.1106"/>
+                          </g>
+                         </g>
+                         <g fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.3229">
+                          <path d="m30.804 82.446h2.3511"/>
+                          <path d="m30.758 86.908h2.3511"/>
+                          <path d="m30.798 91.112h2.3511"/>
+                         </g>
+                         <g transform="translate(136.54)" fill="none" stroke-linecap="square" stroke-width="1.3229">
+                          <path d="m31.954 82.444 8.7844 0.0023" stroke="#fb0000"/>
+                          <path d="m33.109 86.908 8.7844 0.0023" stroke="#fbf900"/>
+                          <path d="m31.954 91.11 8.7844 0.0023" stroke="#0088fb"/>
+                         </g>
+                         <g transform="translate(146.07)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.3229">
+                          <path d="m30.804 82.446h2.3511"/>
+                          <path d="m30.758 86.908h2.3511"/>
+                          <path d="m30.798 91.112h2.3511"/>
+                         </g>
+                         <g transform="translate(12.115)">
+                          <g transform="translate(2.4568)">
+                           <g stroke="#000" stroke-linecap="square">
+                            <g stroke-width="1.3229">
+                             <rect x="55.563" y="81.114" width="11.339" height="11.339" fill="#afafaf"/>
+                             <g>
+                              <path d="m55.554 82.446h-1.3057"/>
+                              <path d="m55.554 91.112h-1.3057"/>
+                              <path d="m55.514 86.908h-1.3057"/>
+                              <path d="m68.224 86.908h-1.3057"/>
+                              <path d="m68.224 82.42h-1.3057"/>
+                              <path d="m68.224 91.127h-1.3057"/>
+                             </g>
+                            </g>
+                            <circle id="led_two" cx="61.194" cy="86.746" r="3.4963" fill="#008aff" stroke-width=".79375"/>
+                           </g>
+                          </g>
+                         </g>
+                         <g transform="translate(19.466 -3.4018)" fill="none" stroke="#000" stroke-linecap="square" stroke-width=".29104">
+                          <path d="m55.385 86.661v3.2072h-2.4722"/>
+                          <path d="m55.385 89.869 0.70904 0.70904h2.2125l0.64558-0.64558h0.86632"/>
+                          <path d="m58.307 90.578v2.1106"/>
+                         </g>
+                         <g stroke="#000" stroke-linecap="square">
+                          <g transform="translate(72.308)">
+                           <g stroke-width="1.3229">
+                            <rect x="27.214" y="81.114" width="11.339" height="11.339" fill="#afafaf"/>
+                            <g>
+                             <path d="m27.206 82.446h-1.3057"/>
+                             <path d="m27.206 91.112h-1.3057"/>
+                             <path d="m27.166 86.908h-1.3057"/>
+                             <path d="m39.875 86.908h-1.3057"/>
+                             <path d="m39.875 82.42h-1.3057"/>
+                             <path d="m39.875 91.127h-1.3057"/>
+                            </g>
+                           </g>
+                           <circle id="led_three" cx="32.846" cy="86.746" r="3.4963" fill="#0002ff" stroke-width=".79375"/>
+                          </g>
+                          <g transform="translate(48.806 -3.4018)" fill="none" stroke-width=".29104">
+                           <path d="m55.385 86.661v3.2072h-2.4722"/>
+                           <path d="m55.385 89.869 0.70904 0.70904h2.2125l0.64558-0.64558h0.86632"/>
+                           <path d="m58.307 90.578v2.1106"/>
+                          </g>
+                         </g>
+                         <g stroke="#000" stroke-linecap="square">
+                          <g transform="translate(101.7)">
+                           <g stroke-width="1.3229">
+                            <rect x="27.214" y="81.114" width="11.339" height="11.339" fill="#afafaf"/>
+                            <g>
+                             <path d="m27.206 82.446h-1.3057"/>
+                             <path d="m27.206 91.112h-1.3057"/>
+                             <path d="m27.166 86.908h-1.3057"/>
+                             <path d="m39.875 86.908h-1.3057"/>
+                             <path d="m39.875 82.42h-1.3057"/>
+                             <path d="m39.875 91.127h-1.3057"/>
+                            </g>
+                           </g>
+                           <circle id="led_four" cx="32.846" cy="86.746" r="3.4963" fill="#8c00ff" stroke-width=".79375"/>
+                          </g>
+                          <g transform="translate(78.222 -3.4018)" fill="none" stroke-width=".29104">
+                           <path d="m55.385 86.661v3.2072h-2.4722"/>
+                           <path d="m55.385 89.869 0.70904 0.70904h2.2125l0.64558-0.64558h0.86632"/>
+                           <path d="m58.307 90.578v2.1106"/>
+                          </g>
+                         </g>
+                         <g stroke="#000" stroke-linecap="square">
+                          <g transform="translate(131.08)">
+                           <g stroke-width="1.3229">
+                            <rect x="27.214" y="81.114" width="11.339" height="11.339" fill="#afafaf"/>
+                            <g>
+                             <path d="m27.206 82.446h-1.3057"/>
+                             <path d="m27.206 91.112h-1.3057"/>
+                             <path d="m27.166 86.908h-1.3057"/>
+                             <path d="m39.875 86.908h-1.3057"/>
+                             <path d="m39.875 82.42h-1.3057"/>
+                             <path d="m39.875 91.127h-1.3057"/>
+                            </g>
+                           </g>
+                           <circle id="led_five" cx="32.846" cy="86.746" r="3.4963" fill="#e800ff" stroke-width=".79375"/>
+                          </g>
+                          <g transform="translate(107.69 -3.4018)" fill="none" stroke-width=".29104">
+                           <path d="m55.385 86.661v3.2072h-2.4722"/>
+                           <path d="m55.385 89.869 0.70904 0.70904h2.2125l0.64558-0.64558h0.86632"/>
+                           <path d="m58.307 90.578v2.1106"/>
+                          </g>
+                         </g>
+                        </g>
+                       </svg>                       
+                    <intput type="button" class="ledbutton">Toggle</input>
+                </div>
+
+                <div id="underglowleft" class="tabcontent">
+                    <form action="/get">
+                        InputOne: <input type="text" name="input1" value="Red Value">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+
+                <div id="underglowright" class="tabcontent">
+
+                </div>
+
+                <div id="bar" class="tabcontent">
+                    <label for="color">Select a color to set the led strip as: </label><br>
+                    <input type="color" id="color" value="#FFFF00">
+                </div>
+                
+                <div id="theme" class="tabcontent">
+                    
+                </div>
+            </div>
+
+            <div class="footer noselect">
+                <p>
+                    © COPYRIGHT 2020
+                </p>
+                <p>
+                    All rights reserved. This site, firmware, and logo are the intellectual property
+                    of Logan Surface. Any modifications or usage of components contained within
+                    is strictly prohibitied
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

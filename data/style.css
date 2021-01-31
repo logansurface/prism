@@ -1,0 +1,188 @@
+@charset "utf-8";
+/* 
+    Sets box sizing for the all the elements on the page 
+    and defines global attributes for the site
+*/
+*
+{
+    box-sizing: border-box;
+    --light-text-color: #f8f8f8;
+    --light-bg-color: #ececec;
+    --dark-bg-color: #989898;
+    --dark-text-color: #595959;
+    --def-outline-color: black;
+    --header-color: #87cfeb;
+    --footer-color: #ff8585;
+}
+
+/* 
+    Sets the global properties for elements within the body tag
+*/
+body
+{
+    font-family: Arial;
+    margin: 0;
+    font-size: large;
+    color: var(--light-text-color);
+    background-image: url(seamless_hearts.jpg);
+    background-repeat: repeat;
+}
+
+/*
+    Default sizing for the embedded svg images
+*/
+#h510_svg
+{
+    width: 300px;
+    height: auto;
+}
+
+#strip_svg
+{
+    width: 1000px;
+    height: auto;
+}
+
+/* 
+    Formats the header for the website 
+*/
+.header
+{
+    width: 100%;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    background: var(--header-color);
+    border-bottom: 2px solid var(--def-outline-color);
+}
+.header h1
+{
+    font-size: 350%;
+    letter-spacing: 20px;
+    -webkit-text-stroke-color: var(--dark-text-color);
+    -webkit-text-stroke-width: 1px;
+
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+.header p
+{
+    font-size: 120%;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+
+/*
+    Sets the flex container for the two middle sections, the sidebar and the dynamic option panel 
+*/
+.row
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    background-color: var(--dark-bg-color);
+}
+
+/*
+    Styling for the sidebar, which allows the user to choose an effect option 
+*/
+.side
+{
+    flex: 15%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--dark-bg-color);
+    border-right: 2px solid var(--def-outline-color);
+    padding: 20px 20px;
+}
+
+/*
+    The tablink class represents the buttons present in the sidebar styled above
+*/
+.tablink
+{
+    text-decoration: none;
+    border: none;
+    cursor: pointer;  
+    user-select: none;
+    background-color: rgb(160, 158, 158);
+    color: inherit;
+    padding: 10px 10px;
+    margin: 5px 0px;
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    text-align: left;
+}
+.tablink:hover
+{
+    border-left: 5px solid var(--header-color);
+    transition: .3s;
+}
+.tablink:active
+{
+    border-left: 5px solid var(--light-text-color);
+    color: var(--header-color);
+}
+.tablink:focus
+{
+    outline: none;
+    background-color: rgb(131, 130, 130);
+    box-shadow: 2px 2px 1px inset rgba(0, 0, 0, 0.5),
+                -2px -2px 1px inset rgba(0, 0, 0, 0.5);
+}
+
+/* 
+   The main class is the section to the right of the sidebar. 
+   The dynamic options for each effect should be styled here 
+*/
+.main
+{
+    flex: 85%;
+    display: block;
+    background-color: var(--light-bg-color);
+    color: var(--dark-text-color);
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 50px;
+}
+
+#intro_text
+{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.tabcontent
+{
+    display: none;
+    justify-content: center;
+}
+
+#color
+{
+    margin-left: 10px;
+}
+
+/*
+    The footer containing copyright information is styled here
+*/
+.footer
+{
+    background-color: var(--footer-color);
+    width: 100%;
+    padding: 20px;
+    font-size: 110%;
+    font-weight: bold;
+    text-align: center;
+    border-top: 2px solid var(--def-outline-color);
+    box-shadow: 0px 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+.noselect
+{
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-touch-select: none;
+    -moz-user-select: none;
+}
