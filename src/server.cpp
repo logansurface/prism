@@ -10,19 +10,18 @@ const char *ssid;
 const char *pass;
 AsyncWebServer server(80);
 
+// Capacity determined by a json file holding only WiFi info
+// It will need to be expanded for further configuration settings
 const int capacity = JSON_OBJECT_SIZE(2);
 StaticJsonDocument<256> config_doc;
 
 void start_access_point(const char *, const char *);
 void start_station(const char *, const char *);
-void export_config(File, const char *, const char *);
 String processor(const String &);
-String handle_not_found();
 
 void setup()
 {
     Serial.begin(115200);
-    pinMode(LED_BUILTIN, OUTPUT);
     Serial.println();
 
     if (!SPIFFS.begin(true))
@@ -43,18 +42,14 @@ void setup()
         Serial.println("IP Address: " + ip.toString());
 
         server.on("/", HTTP_GET, [](AsyncWebServerRequest *req) {
-            req->send(SPIFFS, "/config.html", "text/html");
+            req->send(SPIFFS, "/setup.html", "text/html");
         });
         server.on("/set", HTTP_POST, [config_file](AsyncWebServerRequest *req) {
             if (req->hasParam("ssid") && req->hasParam("pass"))
             {
                 ssid = req->getParam("ssid")->value().c_str();
                 pass = req->getParam("pass")->value().c_str();
-
-                //        config_doc["ssid"] = "FBI Surveillance Van";
-                //        config_doc["pass"] = "Hockey11";
-                //        serializeJson(config_doc, config_file);
-                export_config(config_file, ssid, pass);
+                serializeJson(config_doc, config_file);
 
                 req->send(200, "text/plain", "Configuration succeeded. Restarting device...");
 
@@ -68,7 +63,7 @@ void setup()
             }
         });
         server.onNotFound([](AsyncWebServerRequest *req) {
-            req->send(404, "text/plain", "Not Found..");
+            req->send(404, "text/plain", "Not found..");
         });
 
         server.begin();
@@ -81,11 +76,11 @@ void setup()
         {
             Serial.println("Failed to deserialize the config file. Aborting...");
             Serial.println(d_err.c_str());
-            //return;
+            return;
         }
 
-        ssid = "Apt_WiFi_EXT";
-        pass = "basketjudge382";
+        ssid = config_doc["ssid"];
+        pass = config_doc["pass"];
 
         Serial.println("Found config file,  connecting to " + String(ssid));
         Serial.println("Network settings will be available to change if WiFi fails to connect.");
@@ -93,13 +88,13 @@ void setup()
         start_station(ssid, pass);
 
         server.on("/", HTTP_GET, [](AsyncWebServerRequest *req) {
-            req->send(SPIFFS, "./index.html", "text/html");
+            req->send(SPIFFS, "./index.html", "text/html", processor);
         });
         server.on("/set", HTTP_POST, [](AsyncWebServerRequest *req) {
             if (req->hasParam("mode") && req->hasParam("args"))
             {
- //               const char *mode = req->getParam("mode")->value().c_str();
-//                const char *mode_args = req->getParam("args")->value().c_str();
+                const char *mode = req->getParam("mode")->value().c_str();
+                const char *mode_args = req->getParam("args")->value().c_str();
 
                 // TODO: Call fastled modes and write json
             }
@@ -147,11 +142,6 @@ void start_station(const char *ssid, const char *pass)
     }
 
     Serial.println("\n\nIP Address: " + WiFi.localIP());
-}
-
-void export_config(File config_file, const char *ssid, const char *pass)
-{
-    config_file.println("ssid: \"FBI\"");
 }
 
 /*
