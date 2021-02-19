@@ -1,6 +1,7 @@
 #include <Arduino.h>
-#include <FastLED.h>
+
 #include <string.h>
+#include <FastLED.h>
 
 #pragma once
 
